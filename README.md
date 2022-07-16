@@ -1,4 +1,4 @@
 # ArcaeaKit
 一个有关Arcaea的工具集
-### LICENSE
-使用`616 SB LICENSE`
+### License
+使用`616 SB License`
