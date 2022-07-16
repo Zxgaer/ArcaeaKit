@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="window">
+    <file>top_bar_bg.png</file>
+  </qresource>
+</RCC>
