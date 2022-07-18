@@ -2,8 +2,14 @@ from ctypes import alignment
 import sys
 from PySide6 import QtCore, QtWidgets, QtGui
 class bindWidget(QtWidgets.QDialog):
+    def getUsercode(self):
+        self.usercode = self.userIdEdit.text()
+        print(self.usercode)
+        self.close()
+        return self.usercode
     def __init__(self):
         super().__init__()
+        self.usercode = None
         self.setWindowTitle("ArcaeaKit Login")   #标题ArcaeaKit
         self.setWindowIcon(QtGui.QIcon("./assets/icon.png"))  #设置icon
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
@@ -27,12 +33,13 @@ class bindWidget(QtWidgets.QDialog):
         self.loginButton.setFont(QtGui.QFont("Noto Sans CJK SC Regular",15))
         self.loginButton.setStyleSheet("border-image: url(./assets/login_btn.png);color: rgb(255,255,255)")
         self.loginButton.setMinimumHeight(40)
+        self.loginButton.clicked.connect(self.getUsercode)
 
         self.closeButton = QtWidgets.QPushButton(text="  取消绑定  ")
         self.closeButton.setFont(QtGui.QFont("Noto Sans CJK SC Regular",15))
         self.closeButton.setStyleSheet("border-image: url(./assets/login_btn.png);color: rgb(255,255,255)")
         self.closeButton.setMinimumHeight(40)
-        self.closeButton.clicked.connect(self.close)
+        self.closeNow = self.closeButton.clicked.connect(self.close)
 
         self.layout = QtWidgets.QGridLayout(self)
         self.layout.setContentsMargins(0,10,0,0)

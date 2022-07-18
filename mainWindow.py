@@ -1,11 +1,11 @@
-from ctypes import alignment
 import sys
 from PySide6 import QtCore, QtWidgets, QtGui
 from bindUi import bindWidget
+import getPlayerInfo
 class MainWidget(QtWidgets.QWidget):
     def openBindWeidgt(self):
-        WbindWidget = bindWidget()
-        WbindWidget.exec()
+        self.WbindWidget = bindWidget()
+        self.WbindWidget.exec()
     def __init__(self):
         super().__init__()
         self.setWindowTitle("ArcaeaKit")   #标题ArcaeaKit
@@ -26,7 +26,7 @@ class MainWidget(QtWidgets.QWidget):
         self.pttCalculatorButton = QtWidgets.QPushButton(text="PTT计算")
 
         self.settingsButton = QtWidgets.QPushButton(text="设置")
-        
+
         self.best30Button = QtWidgets.QPushButton(text="Best30查询")
 
         self.bindButton = QtWidgets.QPushButton(text="绑定Arcaea账号")
@@ -59,6 +59,9 @@ class MainWidget(QtWidgets.QWidget):
         self.layout.setContentsMargins(0,0,0,0)
         self.layout.addWidget(self.topBar,0,0,1,1)
         self.layout.addWidget(self.mainBoxWeidgt,1,0,18,1)
+
+        if bindWidget.getUsercode != None:
+            getPlayerInfo.getInfo(bindWidget. + "-1 -1")
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])
